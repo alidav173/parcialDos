@@ -1,4 +1,4 @@
-id,first_name,adress,tipo
+idSalon,nombre,direccion,tipoSalon
 1,Des,13 Chive Way,1
 2,Nye,8091 Linden Drive,1
 3,June,51117 Mcbride Plaza,1
