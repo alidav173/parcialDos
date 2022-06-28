@@ -1,0 +1,21 @@
+id,nacionalidad,tipoSonido,jugadores,fichas,idSalon,idJuego
+1,Indonesia,2,3,6,2,1
+2,Lithuania,1,2,9,2,1
+3,Nigeria,2,2,6,2,2
+4,China,2,3,6,4,3
+5,Ukraine,1,2,3,2,4
+6,Serbia,2,4,1,6,5
+7,Russia,1,2,7,3,6
+8,Poland,1,4,3,4,4
+9,United States,1,3,3,9,7
+10,Ecuador,1,3,4,4,8
+11,USA,2,3,6,2,1
+12,Russia,1,2,9,3,1
+13,Algeria,2,2,6,5,2
+14,Japan,2,3,6,4,3
+15,Ukraine,1,2,3,1,4
+16,Serbia,2,4,1,3,5
+17,Russia,1,2,7,2,6
+18,Scottland,1,4,3,3,4
+19,United States,1,3,3,3,7
+20,Venezuela,1,3,4,4,8
