@@ -2,7 +2,7 @@
  * parser.h
  *
  *  Created on: 25 jun. 2022
- *      Author: Alí Ansidey
+ *      Author: Alï¿½ Ansidey
  */
 
 #ifndef PARSER_H_
@@ -20,5 +20,12 @@ int parser_SalonFromText(FILE* pFile , LinkedList* listaSalones);
 int parser_ArcadeFromText(FILE* pFile , LinkedList* listaArcades);
 
 int parser_JuegoFromText(FILE* pFile , LinkedList* listaJuegos);
+
+/*
+int parser_SalonFromBinary(FILE* pFile, LinkedList listaSalones);
+
+int parser_ArcadeFromBinary(FILE* pFile , LinkedList* listaArcades);
+
+int parser_JuegoFromBinary(FILE* pFile , LinkedList* listaJuegos);*/
 
 #endif /* PARSER_H_ */

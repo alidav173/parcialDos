@@ -2,7 +2,7 @@
  * menu.c
  *
  *  Created on: 24 jun. 2022
- *      Author: Alí Ansidey
+ *      Author: Alï¿½ Ansidey
  */
 
 
@@ -10,8 +10,8 @@
 
 void mostrarMenuUno(){
 
-	printf("1. Alta de salón\n");
-	printf("2. Eliminar salón\n");
+	printf("1. Alta de salon\n");
+	printf("2. Eliminar salon\n");
 	printf("3. Listar salones\n");
 	printf("4. Incorporar arcade\n");
 	printf("5. Modificar arcade\n");
@@ -29,14 +29,15 @@ void mostrarMenuDos(){
 	printf("3. Listar informacion de un salon especifico\n");
 	printf("4. Listar salones completos[4 Plataforma, 3 laberinto, 5 aventura]\n");
 	printf("5. Listar todos los arcades de un salon\n");
-	printf("5. Imprimir salon con mas arcades\n");
-	printf("6. Listar los arcades con sonido MONO\n");
-	printf("7. Salir del submenu\n");
+	printf("6. Imprimir salon con mas arcades\n");
+	printf("7. Listar los arcades con sonido MONO\n");
+	printf("8.agregar una funcion que filtre una lista y tenga una sublista filtrada (mirar el sort)");//nueva funcion 28-06
+
 }
 
 void mostrarMenuTres(){
 	printf("1. Cantidad de jugadores\n");
 	printf("2. Id del juego\n");
-	printf("3. Volver al menú\n");
+	printf("3. Volver al menu\n");
 
 }

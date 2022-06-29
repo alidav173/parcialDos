@@ -10,6 +10,8 @@
 
 #include "informes.h"
 
+//agregar una funcion que filtre una lista y tenga una sublista filtrada (mirar el sort)
+
 int main(void) {
 	setbuf(stdout, NULL);
 	//inicializo las listas de salones, arcades y juegos
@@ -18,6 +20,8 @@ int main(void) {
 	LinkedList* listaJuegos = ll_newLinkedList();
 
 	int option,option2, idSalon, idArcade;
+	char nacionalidad[50];//agregado para la nueva funcion
+	Arcade* arcadePrueba;//agregado para la nueva funcion
 	controller_salonLoadFromText("salon.csv", listaSalones);
 	controller_arcadeLoadFromText("arcade.csv",listaArcades);
 	controller_juegoLoadFromText("juego.csv",listaJuegos);
@@ -95,7 +99,7 @@ int main(void) {
 
 	            case 10: //informes
 	            	mostrarMenuDos();
-	            	utn_getNumero(&option2,"Ingrese la opcion deseada:\n","Reingrese su opcion\n",1,7,3);
+	            	utn_getNumero(&option2,"Ingrese la opcion deseada:\n","Reingrese su opcion\n",1,8,3);
 	            	switch(option2){
 
 	            	case 1://Listar los salones con mas de 4 arcade. Indicando ID de salon, nombre, direccion y tipo de salon.
@@ -106,7 +110,7 @@ int main(void) {
 	            		listarArcadeMayorDosJugadores(listaSalones,listaArcades,listaJuegos);
 	            		break;
 
-	            	case 3://Listar toda la informacion de un salon en espec�fico ingresado por el usuario
+	            	case 3://Listar toda la informacion de un salon en especifico ingresado por el usuario
 	            		utn_getNumero(&idSalon,"Ingrese el id del salon a buscar:\n","Reingrese su el id del salon:\n",1,INT_MAX,3);
 	            		listarInfomacionSalon(listaSalones,idSalon);
 	            		break;
@@ -116,14 +120,24 @@ int main(void) {
 	            		break;
 
 	            	case 5://Listar todos los arcades de un salón determinado ingresando su ID.
+	            		utn_getNumero(&idSalon,"Ingrese el id del salon a buscar:\n","Reingrese su el id del salon:\n",1,INT_MAX,3);
+	            		listarArcadesDelSalonInforme(listaSalones, listaArcades,idSalon);
 	            		break;
 
 	            	case 6://Imprimir el salón con más cantidad de arcade, ordenados de manera ascendente
+	            		listarSalonesMasArcades(listaSalones, listaArcades);
 	            		break;
 
 	            	case 7://Listar los arcades que cumplan con sonido MONO y el género de su juego sea PLATAFORMA
+	            		listarArcadesMonoPlat(listaArcades,listaJuegos);
 	            		break;
+
+	            	case 8://agregar una funcion que filtre una lista y tenga una sublista filtrada (mirar el sort)
+	            		 filtrarLinkedList(listaArcades,Arcade_getNacionalidad(arcadePrueba,nacionalidad),"China");
+	            		break;
+
 	            	}
+
 	            	break;
 	        }
 	        mostrarMenuUno();

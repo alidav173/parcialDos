@@ -2,7 +2,7 @@
  * informes.c
  *
  *  Created on: 28 jun. 2022
- *      Author: Al� Ansidey
+ *      Author: Ali Ansidey
  */
 
 #include "informes.h"
@@ -88,7 +88,7 @@ int listarInfomacionSalon(LinkedList* pListaSalones,int id){
 
 int listarSalonesCompletos(LinkedList* pListaSalones, LinkedList* pListaArcades, LinkedList* pListaJuegos){
 	int retorno = -1;
-	int lenSalon,lenArcade, lenJuego, i, j,idJuego, genero;
+	int lenSalon,lenArcade, i, j,idJuego, genero;
 	int contadorPlat =0;
 	int contadorLab =0;
 	int contadorAven =0;
@@ -136,3 +136,119 @@ int listarSalonesCompletos(LinkedList* pListaSalones, LinkedList* pListaArcades,
 }
 
 
+int listarArcadesDelSalonInforme(LinkedList* pListaSalones, LinkedList* pListaArcades, int id){
+	int retorno = -1;
+	if(pListaSalones != NULL && pListaArcades != NULL){
+		int lenSalon, lenArcade, idSalon;
+		lenSalon = ll_len(pListaSalones);
+		lenArcade = ll_len(pListaArcades);
+		Arcade* arcadeAmostrar = Arcade_new();
+		for(int i = 0; i< lenArcade; i++){
+			arcadeAmostrar = (Arcade*) ll_get(pListaArcades,i);
+			Arcade_getIdSalon(arcadeAmostrar,&idSalon);
+			if(idSalon== id){
+				mostrarArcade(arcadeAmostrar);
+				retorno= 0;
+			}
+		}
+	}
+	return retorno;
+}
+
+
+
+int listarSalonesMasArcades(LinkedList* pListaSalones, LinkedList* pListaArcades){
+	int retorno = -1;
+	int contador = 0;
+	int idSalon = 1;
+	int max = 1;
+	int lenArcade,lenSalon,i,j;
+	if(pListaSalones != NULL && pListaArcades != NULL){//compruebo que no sea null
+		lenArcade = ll_len(pListaArcades);
+		lenSalon = ll_len(pListaSalones);
+		for(i =0; i<lenSalon;i++){
+			for(j =0; j< lenArcade; j++){
+				Arcade* arcadeBuscado = Arcade_new();
+				arcadeBuscado = (Arcade*)ll_get(pListaArcades,j);
+					if(idSalon == arcadeBuscado->idSalon){//compruebo que el id sea igual al id en el arcade
+						contador++;
+					}
+			}
+			if(contador >max){
+			Salon* salonAimprimir = Salon_new();
+			salonAimprimir = (Salon*)ll_get(pListaSalones,i);
+			mostrarSalon(salonAimprimir);
+			printf("con %d arcades\n",contador);
+			contador=0;
+			free(salonAimprimir);
+			retorno =0;
+		}
+			idSalon++;
+	}
+  }
+	return retorno;
+}
+
+
+int listarArcadesMonoPlat(LinkedList* plistaArcades, LinkedList* plistaJuegos){
+	int retorno = -1;
+	int idJuego;
+	int tipoSonido;
+	int indexJuego;
+	if(plistaArcades != NULL && plistaJuegos != NULL){
+		int lenArcade = ll_len(plistaArcades);
+		int lenJuego = ll_len(plistaJuegos);
+		Arcade* arcadeBuscado = Arcade_new();
+		for(int i = 0; i < lenArcade; i++){
+			arcadeBuscado = ll_get(plistaArcades,i);
+			Arcade_getTipoSonido(arcadeBuscado,&tipoSonido);
+				if(tipoSonido == MONO){
+					Arcade_getIdJuego(arcadeBuscado,&idJuego);//como tengo el id del juego, veo si es plataforma
+					Juego* juegoBuscado = Juego_new();
+					indexJuego= Juego_searchById(plistaJuegos, idJuego);
+					juegoBuscado = ll_get(plistaJuegos,indexJuego);
+					if(juegoBuscado->genero == PLATAFORMA){ //si es igual a plataforma y mono, se imprime
+						mostrarArcade(arcadeBuscado);
+						retorno = 0;
+					}
+				}
+		}
+	}
+
+	return retorno;
+}
+
+
+
+
+
+/** \brief filtra los elementos de la lista utilizando la funcion criterio recibida como parametro
+ * \param pList LinkedList* Puntero a la lista
+ * \param pFunc (*pFunc) Puntero a la funcion criterio
+ * \return int Retorna  (-1) Error: si el puntero a la listas es NULL
+                                ( 0) Si ok
+ */
+int filtrarLinkedList(LinkedList* this, int (*pFunc)(void*,char*), char* filtro)
+{
+    int returnAux =-1;
+    if(this !=NULL && pFunc != NULL && filtro >= 0){
+    	int len = ll_len(this);
+
+    	//itero la lista y filtro segun lo pasado por parametros
+    	for(int i = 0; i< len;i++){
+    		void* pElement1;
+    		pElement1= ll_get(this,i);
+    		char pElement2[50];
+    		pFunc(pElement1,pElement2);
+    			if(pElement1 != NULL && pElement2 != NULL){
+    					if(strcmp(pElement2,filtro)>0){
+    						printf("elemento: %s\n",pElement2);
+    						returnAux =0;
+    					}
+    			}
+
+    	}
+    }
+    return returnAux;
+
+}

@@ -2,7 +2,7 @@
  * parser.c
  *
  *  Created on: 25 jun. 2022
- *      Author: Alí Ansidey
+ *      Author: Alï¿½ Ansidey
  */
 
 #include "parser.h"
@@ -124,3 +124,15 @@ int parser_JuegoFromText(FILE* pFile , LinkedList* plistaJuegos)
 	    return retorno;
 }
 
+/*
+int parser_SalonFromBinary(FILE* pFile, LinkedList listaSalones){
+	int retorno = -1;
+	Salon* pSalon;
+	if(pFile != NULL && listaSalones != NULL){
+		while(!feof(pFile)){ //mientras no sea el final del archivo, entro al bucle
+			pSalon = Salon_new();
+		}
+
+	}
+}
+*/
